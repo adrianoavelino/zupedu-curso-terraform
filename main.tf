@@ -10,3 +10,7 @@ terraform {
 provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
+
+resource "docker_image" "docusaurus" {
+  name = "public.ecr.aws/zup-academy/docusaurus-zup:latest"
+}
