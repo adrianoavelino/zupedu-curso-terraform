@@ -23,3 +23,11 @@ resource "docker_container" "docusaurus" {
     internal = "3000"
   }
 }
+
+output "name" {
+  value = docker_container.docusaurus.name
+}
+
+output "ip_address" {
+  value = "${docker_container.docusaurus.ip_address}:${lookup(docker_container.docusaurus.ports[0], "external")}"
+}
