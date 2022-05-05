@@ -29,5 +29,5 @@ output "name" {
 }
 
 output "ip_address" {
-  value = "${docker_container.docusaurus.ip_address}:${lookup(docker_container.docusaurus.ports[0], "external")}"
+  value = join(":", [docker_container.docusaurus.ip_address, docker_container.docusaurus.ports[0].external])
 }
