@@ -24,10 +24,21 @@ resource "docker_container" "docusaurus" {
   }
 }
 
+resource "docker_container" "docusaurus2" {
+  name  = "docusaurus-${docker_container.docusaurus.id}"
+  image = docker_image.docusaurus.latest
+
+  ports {
+    internal = "3000"
+  }
+}
+
+
+
 output "name" {
   value = docker_container.docusaurus.name
 }
 
 output "ip_address" {
-  value = join(":", [docker_container.docusaurus.ip_address, docker_container.docusaurus.ports[0].external])
+  value = join(":", [docker_container.docusaurus.ip_address, docker_container.docusaurus.ports[*].external])
 }
