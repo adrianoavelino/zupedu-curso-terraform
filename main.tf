@@ -15,30 +15,27 @@ resource "docker_image" "docusaurus" {
   name = "public.ecr.aws/zup-academy/docusaurus-zup:latest"
 }
 
+resource "random_string" "random" {
+  count            = 2
+  length           = 4
+  special          = false
+  upper            = false
+}
+
 resource "docker_container" "docusaurus" {
-  name  = "docusaurus"
+  count = 2
+  name  = "docusaurus-${random_string.random[count.index].id}"
   image = docker_image.docusaurus.latest
 
   ports {
     internal = "3000"
   }
 }
-
-resource "docker_container" "docusaurus2" {
-  name  = "docusaurus-${docker_container.docusaurus.id}"
-  image = docker_image.docusaurus.latest
-
-  ports {
-    internal = "3000"
-  }
-}
-
-
 
 output "name" {
-  value = docker_container.docusaurus.name
+  value = docker_container.docusaurus[*].name
 }
 
 output "ip_address" {
-  value = join(":", [docker_container.docusaurus.ip_address, docker_container.docusaurus.ports[*].external])
+    value = [for i in docker_container.docusaurus[*]: join(":", [i.ip_address], i.ports[*]["external"])]
 }
