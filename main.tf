@@ -16,19 +16,20 @@ resource "docker_image" "docusaurus" {
 }
 
 resource "random_string" "random" {
-  count            = 2
+  count            = var.container_count
   length           = 4
   special          = false
   upper            = false
 }
 
 resource "docker_container" "docusaurus" {
-  count = 2
+  count = var.container_count
   name  = "docusaurus-${random_string.random[count.index].id}"
   image = docker_image.docusaurus.latest
 
   ports {
-    internal = "3000"
+    internal = var.internal_port
+    external = var.external_port
   }
 }
 
