@@ -1,18 +1,5 @@
-terraform {
-  required_providers {
-    docker = {
-      source  = "kreuzwerker/docker"
-      version = "2.16.0"
-    }
-  }
-}
-
-provider "docker" {
-  host = "unix:///var/run/docker.sock"
-}
-
 resource "docker_image" "docusaurus" {
-  name = "public.ecr.aws/zup-academy/docusaurus-zup:latest"
+  name = var.docker_image_name
 }
 
 resource "random_string" "random" {
@@ -33,10 +20,3 @@ resource "docker_container" "docusaurus" {
   }
 }
 
-output "name" {
-  value = docker_container.docusaurus[*].name
-}
-
-output "ip_address" {
-    value = [for i in docker_container.docusaurus[*]: join(":", [i.ip_address], i.ports[*]["external"])]
-}
