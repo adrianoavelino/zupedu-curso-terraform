@@ -8,11 +8,6 @@ variable "internal_port" {
 }
 
 variable "external_port" {
-  type    = number
-  default = 3000
-}
-
-variable "container_count" {
-  type    = number
-  default = 1
+  type    = list(string)
+  default = ["3000", "3001"]
 }
