@@ -1,13 +1,21 @@
-variable "docker_image_name" {
-  type = string
-  default = "public.ecr.aws/zup-academy/docusaurus-zup:latest"
-}
+
 variable "internal_port" {
   type    = number
   default = 3000
 }
 
 variable "external_port" {
-  type    = list(string)
-  default = ["3000", "3001"]
+  type    = map(any)
+  default = {
+    dev = [3000, 3001], 
+    qa = [4000, 4001]
+  }
+}
+
+variable "ambiente" {
+  type = map(any)
+  default = {
+    dev = "public.ecr.aws/zup-academy/docusaurus-zup:dev"
+    qa = "public.ecr.aws/zup-academy/docusaurus-zup:qa"
+  }
 }

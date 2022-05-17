@@ -1,3 +1,3 @@
 locals {
-  container_count = length(var.external_port)
+  container_count = length(lookup(var.external_port, terraform.workspace))
 }
