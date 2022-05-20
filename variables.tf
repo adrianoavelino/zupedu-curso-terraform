@@ -12,7 +12,7 @@ variable "external_port" {
   }
 }
 
-variable "ambiente" {
+variable "image" {
   type = map(any)
   default = {
     dev = "public.ecr.aws/zup-academy/docusaurus-zup:dev"
