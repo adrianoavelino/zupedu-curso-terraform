@@ -1,4 +1,3 @@
-
 variable "internal_port" {
   type    = number
   default = 3000

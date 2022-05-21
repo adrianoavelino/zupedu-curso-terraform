@@ -1,7 +1,7 @@
 output "container_name" {
-  value = docker_container.docusaurus[*].name
+  value =[for i in module.container.container_module : i.name]
 }
 
 output "ip_address" {
-  value = [for i in docker_container.docusaurus[*] : join(":", [i.ip_address], i.ports[*]["external"])]
+  value = [for i in module.container.container_module : join(":", [i.ip_address], i.ports[*]["external"])]
 }
