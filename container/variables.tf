@@ -1,4 +1,4 @@
-variable "container_count" {
+variable "container_name" {
 }
 
 variable "container_image" {
