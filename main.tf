@@ -1,6 +1,8 @@
 module "image" {
   source = "./image"
-  image_stored = var.image[terraform.workspace]
+  image_stored = var.image2[terraform.workspace].app
+  redis_stored = var.image2[terraform.workspace].redis
+  # image_stored = var.image[terraform.workspace]
 }
 
 module "container" {

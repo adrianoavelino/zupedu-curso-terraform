@@ -11,10 +11,27 @@ variable "external_port" {
   }
 }
 
+
 variable "image" {
   type = map(any)
   default = {
     dev = "public.ecr.aws/zup-academy/docusaurus-zup:dev"
     qa = "public.ecr.aws/zup-academy/docusaurus-zup:qa"
+  }
+}
+
+variable "image2" {
+  type = map(map(any))
+  default = {
+    dev = {
+      app = "public.ecr.aws/zup-academy/docusaurus-zup:dev"
+      redis = "redis:alpine" 
+    }
+    
+    qa = {
+      app = "public.ecr.aws/zup-academy/docusaurus-zup:qa"
+      redis = "redis:buster"
+    }
+    
   }
 }
