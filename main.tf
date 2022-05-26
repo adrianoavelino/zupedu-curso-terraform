@@ -1,7 +1,7 @@
 module "image" {
   source = "./image"
-  image_stored = var.image2[terraform.workspace].app
-  redis_stored = var.image2[terraform.workspace].redis
+  image_stored = var.image[terraform.workspace].app
+  redis_stored = var.image[terraform.workspace].redis
 }
 
 module "container" {
@@ -9,8 +9,8 @@ module "container" {
   count = local.container_count
   container_name = join("-", ["docusaurus-zup", terraform.workspace, random_string.random[count.index].id])
   container_image = module.image.image_module
-  container_internal_port = var.internal_port2.app
-  container_external_port = lookup(var.external_port2, terraform.workspace).app[count.index]
+  container_internal_port = var.internal_port.app
+  container_external_port = lookup(var.external_port, terraform.workspace).app[count.index]
 }
 
 module "redis" {
@@ -18,8 +18,8 @@ module "redis" {
   count = local.container_redis_count
   container_name = join("-", ["docusredis", terraform.workspace, random_string.random[count.index].id])
   container_image = module.image.redis_module
-  container_internal_port =  var.internal_port2.redis
-  container_external_port = lookup(var.external_port2, terraform.workspace).redis[count.index]
+  container_internal_port =  var.internal_port.redis
+  container_external_port = lookup(var.external_port, terraform.workspace).redis[count.index]
 }
 
 resource "random_string" "random" {

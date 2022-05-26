@@ -9,3 +9,8 @@ output "container_redis" {
 output "ip_address" {
   value = [for i in module.container[*].container_module : join(":", [i.ip_address], i.ports[*]["external"])]
 }
+
+
+output "ip_address_redis" {
+  value = [for i in module.redis[*].container_redis : join(":", [i.ip_address], i.ports[*]["external"])]
+}
