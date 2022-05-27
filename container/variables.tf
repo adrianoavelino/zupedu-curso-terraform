@@ -1,11 +1,14 @@
-variable "container_name" {
+variable "count_stored" {
 }
 
-variable "container_image" {
+variable "name_stored" {
 }
 
-variable "container_internal_port" {
+variable "image_stored" {
 }
 
-variable "container_external_port" {
+variable "internal_stored" {
+}
+
+variable "external_stored" {
 }

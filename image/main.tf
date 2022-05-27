@@ -1,7 +1,3 @@
-resource "docker_image" "docusaurus" {
+resource "docker_image" "image_type" {
   name = var.image_stored
-}
-
-resource "docker_image" "docusredis" {
-  name = var.redis_stored
 }
