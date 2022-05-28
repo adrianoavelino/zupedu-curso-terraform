@@ -70,5 +70,7 @@ docker stop (docker ps -q); docker container prune
 docker stop $(docker ps -q) & docker container prune
 ```
 
+> A execução dos comandos está disponível no Youtube no canal [Diário de um dev](https://youtu.be/3BD_F1TSvOM)
+
 ## Links
 - [Projeto final do Desafio: Fundamentos sobre Terraform](https://github.com/zup-academy/curso-terraform)
