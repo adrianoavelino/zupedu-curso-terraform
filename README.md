@@ -1,10 +1,17 @@
 # zupedu-curso-terraform
+
+![GitHub top language](https://img.shields.io/github/languages/top/adrianoavelino/zupedu-curso-terraform)
+[![Feito por](https://img.shields.io/badge/made%20by-adriano%20avelino-gree)](https://github.com/adrianoavelino)
+[![Tamanho do repositório](https://img.shields.io/github/repo-size/adrianoavelino/zupedu-curso-terraform)](https://img.shields.io/github/repo-size/adrianoavelino/zupedu-curso-terraform)
+[![Último commit do Github](https://img.shields.io/github/last-commit/adrianoavelino/zupedu-curso-terraform)](https://github.com/adrianoavelino/zupedu-curso-terraform/commits/main)
+
+
 Desafio: Fundamentos sobre Terraform da [Zup Edu](https://www.zup.com.br/zup-edu)
 
 ![Imagem do terminal exibindo o output do terraform mostrando as informações do nome, IP e porta dos recursos dos containers criados](./img/print.png)
 
 O desafio consiste na utilização do provider docker para criação dos recursos de imagens e containers utilizando Terraform.
-Durante os desafios foram utilizados os seguintes recursos da HCL (Hash Corp Language):
+Durante os desafios foram utilizados os seguintes recursos da HCL (HashiCorp Language):
 - variables
 - locals
 - provider
